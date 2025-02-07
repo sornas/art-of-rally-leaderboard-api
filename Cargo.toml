@@ -1,5 +1,9 @@
 [package]
 name = "art-of-rally-leaderboard-api"
+description = "URL generation and types for parsing the responses from the Art of Rally leaderboard API"
+license = "GPL-3.0-or-later"
+readme = "README.md"
+repository = "https://github.com/sornas/art-of-rally-leaderboard-api"
 version = "0.1.0"
 edition = "2021"
 
