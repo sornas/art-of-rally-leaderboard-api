@@ -8,6 +8,8 @@ pub enum Area {
     Norway,
     Germany,
     Kenya,
+    Indonesia,
+    Australia,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -101,6 +103,8 @@ impl Leaderboard {
             Area::Norway => "Norway",
             Area::Germany => "Germany",
             Area::Kenya => "Kenya",
+            Area::Indonesia => "Indonesia",
+            Area::Australia => "Australia",
         }
     }
 
