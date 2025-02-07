@@ -1,0 +1,11 @@
+[package]
+name = "art-of-rally-leaderboard-api"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0.217", features = ["derive"] }
+
+[dev-dependencies]
+curl = "0.4.47"
+serde_json = "1.0.138"
