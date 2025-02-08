@@ -9,7 +9,12 @@ edition = "2021"
 
 [dependencies]
 serde = { version = "1.0.217", features = ["derive"] }
+strum = { version = "0.26.3", features = ["derive"], optional = true }
 
 [dev-dependencies]
 curl = "0.4.47"
 serde_json = "1.0.138"
+
+[features]
+default = []
+enum-iter = ["dep:strum"]
