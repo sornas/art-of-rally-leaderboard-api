@@ -1,6 +1,10 @@
 use serde::{Deserialize, Serialize};
 
+#[cfg(feature = "enum-iter")]
+pub use strum::IntoEnumIterator;
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "enum-iter", derive(strum::EnumIter))]
 pub enum Area {
     Finland,
     Sardinia,
@@ -13,18 +17,21 @@ pub enum Area {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "enum-iter", derive(strum::EnumIter))]
 pub enum Direction {
     Forward,
     Backward,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "enum-iter", derive(strum::EnumIter))]
 pub enum Weather {
     Dry,
     Wet,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "enum-iter", derive(strum::EnumIter))]
 pub enum Group {
     Sixties,
     Seventies,
@@ -61,13 +68,13 @@ pub enum Platform {
     None,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize)]
 pub struct Response {
     pub leaderboard: Vec<LeaderboardEntry>,
     pub result: isize, // ?
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LeaderboardEntry {
     #[serde(rename = "uniqueID")]
     pub unique_id: u64, // ?
@@ -84,6 +91,7 @@ pub struct LeaderboardEntry {
     pub platform_id: u8,
 }
 
+#[derive(Debug, Clone)]
 pub struct Leaderboard {
     pub area: Area,
     pub stage: usize,
