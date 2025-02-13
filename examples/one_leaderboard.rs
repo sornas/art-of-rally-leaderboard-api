@@ -15,7 +15,11 @@ impl Handler for Collector {
 
 fn main() {
     let mut curl = Curl::new(Collector::default());
-    let stage = Stage::new(Area::Finland, 1, Direction::Forward);
+    let stage = Stage {
+        area: Area::Finland,
+        stage_number: 1,
+        direction: Direction::Forward,
+    };
     let leaderboard = Leaderboard {
         stage,
         weather: Weather::Dry,

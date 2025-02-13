@@ -72,24 +72,14 @@ pub const AUSTRALIA_STAGES: [&'static str; 6] = [
 
 #[derive(Debug, Clone, Copy)]
 pub struct Stage {
-    area: Area,
-    stage_number: usize, // in range 1..=6
-    direction: Direction,
-}
-
-impl Stage {
-    pub fn new(area: Area, stage_number: usize, direction: Direction) -> Self {
-        assert!((1..=6).contains(&stage_number));
-        Self {
-            area,
-            stage_number,
-            direction,
-        }
-    }
+    pub area: Area,
+    pub stage_number: usize, // in range 1..=6
+    pub direction: Direction,
 }
 
 impl fmt::Display for Stage {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        assert!((1..=6).contains(&self.stage_number));
         let stages = match self.area {
             Area::Finland => FINLAND_STAGES,
             Area::Sardinia => SARDINIA_STAGES,
