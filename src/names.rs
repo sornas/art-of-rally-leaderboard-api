@@ -70,7 +70,7 @@ pub const AUSTRALIA_STAGES: [&'static str; 6] = [
     "wombamurra",
 ];
 
-pub const SIXTIES_CARS: [&'static str; 7] = [
+pub const SIXTIES_CARS: [&'static str; 8] = [
     "the esky v1",
     "the meanie",
     "la montaine",
@@ -78,6 +78,7 @@ pub const SIXTIES_CARS: [&'static str; 7] = [
     "das 119i",
     "le gorde",
     "la regina",
+    "the rotary kei",
 ];
 
 pub const SEVENTIES_CARS: [&'static str; 10] = [
@@ -93,7 +94,7 @@ pub const SEVENTIES_CARS: [&'static str; 10] = [
     "the zetto",
 ];
 
-pub const EIGHTIES_CARS: [&'static str; 9] = [
+pub const EIGHTIES_CARS: [&'static str; 10] = [
     "le cinq",
     "das whip",
     "turbo brick",
@@ -103,9 +104,10 @@ pub const EIGHTIES_CARS: [&'static str; 9] = [
     "la super montaine",
     "la longna",
     "the gazelle",
+    "das scholar",
 ];
 
-pub const GROUP_B_CARS: [&'static str; 16] = [
+pub const GROUP_B_CARS: [&'static str; 17] = [
     "the 4r6",
     "le 502",
     "das hammer v1",
@@ -122,6 +124,7 @@ pub const GROUP_B_CARS: [&'static str; 16] = [
     "the king of africa",
     "das 559",
     "the hyena",
+    "das maestro",
 ];
 
 pub const GROUP_S_CARS: [&'static str; 8] = [
@@ -135,12 +138,13 @@ pub const GROUP_S_CARS: [&'static str; 8] = [
     "the t22",
 ];
 
-pub const GROUP_A_CARS: [&'static str; 5] = [
+pub const GROUP_A_CARS: [&'static str; 6] = [
     "il gorillona",
     "the fujin",
     "the liftback",
     "the max attack",
     "the cozzie 90",
+    "the kingpin",
 ];
 
 pub const VANS: [&'static str; 4] = [
