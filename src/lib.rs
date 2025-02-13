@@ -5,70 +5,7 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "enum-iter")]
 pub use strum::IntoEnumIterator;
 
-pub const FINLAND_STAGES: [&'static str; 6] = [
-    "noormarkku",
-    "lamppi",
-    "palus",
-    "lassila",
-    "kairila",
-    "haapajärvi",
-];
-pub const SARDINIA_STAGES: [&'static str; 6] = [
-    "villacidro",
-    "san gavino monreale",
-    "san benedetto",
-    "gennamari",
-    "portu maga",
-    "montevecchio",
-];
-pub const JAPAN_STAGES: [&'static str; 6] = [
-    "nasu highland",
-    "mount asama",
-    "mount akagi",
-    "nikko",
-    "tsumagoi",
-    "mount haruna",
-];
-pub const NORWAY_STAGES: [&'static str; 6] = [
-    "lapstad",
-    "vestpollen",
-    "stronstad",
-    "kvannkjosen",
-    "grunnfor",
-    "lake rostavatn",
-];
-pub const GERMANY_STAGES: [&'static str; 6] = [
-    "hockweiler",
-    "franzenheim",
-    "holzerath",
-    "farschweiler",
-    "mertesdorf",
-    "gonnesweiler",
-];
-pub const KENYA_STAGES: [&'static str; 6] = [
-    "mount kenya",
-    "karura",
-    "homa bay",
-    "ndere island",
-    "lake baringo",
-    "lake nakuru",
-];
-pub const INDONESIA_STAGES: [&'static str; 6] = [
-    "mount kawi",
-    "semangka bay",
-    "satonda island",
-    "oreng valley",
-    "sangeang island",
-    "kalabakan valley",
-];
-pub const AUSTRALIA_STAGES: [&'static str; 6] = [
-    "gum scrub",
-    "toorooka",
-    "nulla nulla",
-    "comara canyon",
-    "lake lucernia",
-    "wombamurra",
-];
+pub mod names;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Stage {
@@ -81,14 +18,14 @@ impl fmt::Display for Stage {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         assert!((1..=6).contains(&self.stage_number));
         let stages = match self.area {
-            Area::Finland => FINLAND_STAGES,
-            Area::Sardinia => SARDINIA_STAGES,
-            Area::Japan => JAPAN_STAGES,
-            Area::Norway => NORWAY_STAGES,
-            Area::Germany => GERMANY_STAGES,
-            Area::Kenya => KENYA_STAGES,
-            Area::Indonesia => INDONESIA_STAGES,
-            Area::Australia => AUSTRALIA_STAGES,
+            Area::Finland => names::FINLAND_STAGES,
+            Area::Sardinia => names::SARDINIA_STAGES,
+            Area::Japan => names::JAPAN_STAGES,
+            Area::Norway => names::NORWAY_STAGES,
+            Area::Germany => names::GERMANY_STAGES,
+            Area::Kenya => names::KENYA_STAGES,
+            Area::Indonesia => names::INDONESIA_STAGES,
+            Area::Australia => names::AUSTRALIA_STAGES,
         };
         write!(
             f,
@@ -301,4 +238,20 @@ impl Leaderboard {
             .join(",");
         format!("https://www.funselektorfun.com/artofrally/leaderboard/{area}_Stage_{stage}_{direction}_{weather}_{group}/{filter}/{platform}/{user}/[{friends}]")
     }
+}
+
+pub fn car_name(group: Group, car_id: usize) -> &'static str {
+    let names: &[&str] = match group {
+        Group::Sixties => &names::SIXTIES_CARS,
+        Group::Seventies => &names::SEVENTIES_CARS,
+        Group::Eighties => &names::EIGHTIES_CARS,
+        Group::GroupB => &names::GROUP_B_CARS,
+        Group::GroupS => &names::GROUP_S_CARS,
+        Group::GroupA => &names::GROUP_A_CARS,
+        Group::BonusVans => &names::VANS,
+        Group::BonusPiaggio => &names::TRIWHEELERS,
+        Group::BonusDakar => &names::TRUCKS,
+        Group::BonusLogging => &names::LOGGING_TRUCKS,
+    };
+    names[car_id]
 }
