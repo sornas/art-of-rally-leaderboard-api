@@ -1,5 +1,5 @@
 use art_of_rally_leaderboard_api::{
-    Area, Direction, Filter, Group, Leaderboard, Platform, Response, Weather,
+    Area, Direction, Filter, Group, Leaderboard, Platform, Response, Stage, Weather,
 };
 use curl::easy::{Easy2 as Curl, Handler, WriteError};
 
@@ -15,10 +15,9 @@ impl Handler for Collector {
 
 fn main() {
     let mut curl = Curl::new(Collector::default());
+    let stage = Stage::new(Area::Finland, 1, Direction::Forward);
     let leaderboard = Leaderboard {
-        area: Area::Finland,
-        stage: 1,
-        direction: Direction::Forward,
+        stage,
         weather: Weather::Dry,
         group: Group::Sixties,
         filter: Filter::Friends,
@@ -31,5 +30,6 @@ fn main() {
     assert_eq!(curl.response_code().unwrap(), 200);
     let body = String::from_utf8(curl.get_ref().0.clone()).unwrap();
     let resp: Response = serde_json::from_str(&body).unwrap();
+    println!("{stage}");
     dbg!(&resp);
 }

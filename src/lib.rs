@@ -1,7 +1,117 @@
+use std::fmt;
+
 use serde::{Deserialize, Serialize};
 
 #[cfg(feature = "enum-iter")]
 pub use strum::IntoEnumIterator;
+
+pub const FINLAND_STAGES: [&'static str; 6] = [
+    "noormarkku",
+    "lamppi",
+    "palus",
+    "lassila",
+    "kairila",
+    "haapajärvi",
+];
+pub const SARDINIA_STAGES: [&'static str; 6] = [
+    "villacidro",
+    "san gavino monreale",
+    "san benedetto",
+    "gennamari",
+    "portu maga",
+    "montevecchio",
+];
+pub const JAPAN_STAGES: [&'static str; 6] = [
+    "nasu highland",
+    "mount asama",
+    "mount akagi",
+    "nikko",
+    "tsumagoi",
+    "mount haruna",
+];
+pub const NORWAY_STAGES: [&'static str; 6] = [
+    "lapstad",
+    "vestpollen",
+    "stronstad",
+    "kvannkjosen",
+    "grunnfor",
+    "lake rostavatn",
+];
+pub const GERMANY_STAGES: [&'static str; 6] = [
+    "hockweiler",
+    "franzenheim",
+    "holzerath",
+    "farschweiler",
+    "mertesdorf",
+    "gonnesweiler",
+];
+pub const KENYA_STAGES: [&'static str; 6] = [
+    "mount kenya",
+    "karura",
+    "homa bay",
+    "ndere island",
+    "lake baringo",
+    "lake nakuru",
+];
+pub const INDONESIA_STAGES: [&'static str; 6] = [
+    "mount kawi",
+    "semangka bay",
+    "satonda island",
+    "oreng valley",
+    "sangeang island",
+    "kalabakan valley",
+];
+pub const AUSTRALIA_STAGES: [&'static str; 6] = [
+    "gum scrub",
+    "toorooka",
+    "nulla nulla",
+    "comara canyon",
+    "lake lucernia",
+    "wombamurra",
+];
+
+#[derive(Debug, Clone, Copy)]
+pub struct Stage {
+    area: Area,
+    stage_number: usize, // in range 1..=6
+    direction: Direction,
+}
+
+impl Stage {
+    pub fn new(area: Area, stage_number: usize, direction: Direction) -> Self {
+        assert!((1..=6).contains(&stage_number));
+        Self {
+            area,
+            stage_number,
+            direction,
+        }
+    }
+}
+
+impl fmt::Display for Stage {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let stages = match self.area {
+            Area::Finland => FINLAND_STAGES,
+            Area::Sardinia => SARDINIA_STAGES,
+            Area::Japan => JAPAN_STAGES,
+            Area::Norway => NORWAY_STAGES,
+            Area::Germany => GERMANY_STAGES,
+            Area::Kenya => KENYA_STAGES,
+            Area::Indonesia => INDONESIA_STAGES,
+            Area::Australia => AUSTRALIA_STAGES,
+        };
+        write!(
+            f,
+            "{}{}",
+            stages[self.stage_number - 1],
+            if self.direction == Direction::Forward {
+                ""
+            } else {
+                " - r"
+            }
+        )
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "enum-iter", derive(strum::EnumIter))]
@@ -43,6 +153,24 @@ pub enum Group {
     BonusPiaggio,
     BonusDakar,
     BonusLogging,
+}
+
+impl fmt::Display for Group {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let s = match self {
+            Group::Sixties => "sixties",
+            Group::Seventies => "seventies",
+            Group::Eighties => "eighties",
+            Group::GroupB => "group b",
+            Group::GroupS => "group s",
+            Group::GroupA => "group a",
+            Group::BonusVans => "vans",
+            Group::BonusPiaggio => "triwheelers",
+            Group::BonusDakar => "trucks",
+            Group::BonusLogging => "logging",
+        };
+        write!(f, "{}", s)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -93,9 +221,7 @@ pub struct LeaderboardEntry {
 
 #[derive(Debug, Clone)]
 pub struct Leaderboard {
-    pub area: Area,
-    pub stage: usize,
-    pub direction: Direction,
+    pub stage: Stage,
     pub weather: Weather,
     pub group: Group,
     pub filter: Filter,
@@ -171,9 +297,9 @@ impl Leaderboard {
     }
 
     pub fn as_url(&self, user: u64, friends: &[u64]) -> String {
-        let area = Self::fmt_area(self.area);
-        let stage = self.stage;
-        let direction = Self::fmt_direction(self.direction);
+        let area = Self::fmt_area(self.stage.area);
+        let stage = self.stage.stage_number;
+        let direction = Self::fmt_direction(self.stage.direction);
         let weather = Self::fmt_weather(self.weather);
         let group = Self::fmt_group(self.group);
         let filter = Self::fmt_filter(self.filter);
