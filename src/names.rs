@@ -1,4 +1,4 @@
-pub const FINLAND_STAGES: [&'static str; 6] = [
+pub const FINLAND_STAGES: [&str; 6] = [
     "noormarkku",
     "lamppi",
     "palus",
@@ -7,7 +7,7 @@ pub const FINLAND_STAGES: [&'static str; 6] = [
     "haapajärvi",
 ];
 
-pub const SARDINIA_STAGES: [&'static str; 6] = [
+pub const SARDINIA_STAGES: [&str; 6] = [
     "villacidro",
     "san gavino monreale",
     "san benedetto",
@@ -16,7 +16,7 @@ pub const SARDINIA_STAGES: [&'static str; 6] = [
     "montevecchio",
 ];
 
-pub const JAPAN_STAGES: [&'static str; 6] = [
+pub const JAPAN_STAGES: [&str; 6] = [
     "nasu highland",
     "mount asama",
     "mount akagi",
@@ -25,7 +25,7 @@ pub const JAPAN_STAGES: [&'static str; 6] = [
     "mount haruna",
 ];
 
-pub const NORWAY_STAGES: [&'static str; 6] = [
+pub const NORWAY_STAGES: [&str; 6] = [
     "lapstad",
     "vestpollen",
     "stronstad",
@@ -34,7 +34,7 @@ pub const NORWAY_STAGES: [&'static str; 6] = [
     "lake rostavatn",
 ];
 
-pub const GERMANY_STAGES: [&'static str; 6] = [
+pub const GERMANY_STAGES: [&str; 6] = [
     "hockweiler",
     "franzenheim",
     "holzerath",
@@ -43,7 +43,7 @@ pub const GERMANY_STAGES: [&'static str; 6] = [
     "gonnesweiler",
 ];
 
-pub const KENYA_STAGES: [&'static str; 6] = [
+pub const KENYA_STAGES: [&str; 6] = [
     "mount kenya",
     "karura",
     "homa bay",
@@ -52,7 +52,7 @@ pub const KENYA_STAGES: [&'static str; 6] = [
     "lake nakuru",
 ];
 
-pub const INDONESIA_STAGES: [&'static str; 6] = [
+pub const INDONESIA_STAGES: [&str; 6] = [
     "mount kawi",
     "semangka bay",
     "satonda island",
@@ -61,7 +61,7 @@ pub const INDONESIA_STAGES: [&'static str; 6] = [
     "kalabakan valley",
 ];
 
-pub const AUSTRALIA_STAGES: [&'static str; 6] = [
+pub const AUSTRALIA_STAGES: [&str; 6] = [
     "gum scrub",
     "toorooka",
     "nulla nulla",
@@ -70,7 +70,7 @@ pub const AUSTRALIA_STAGES: [&'static str; 6] = [
     "wombamurra",
 ];
 
-pub const SIXTIES_CARS: [&'static str; 8] = [
+pub const SIXTIES_CARS: [&str; 8] = [
     "the esky v1",
     "the meanie",
     "la montaine",
@@ -81,7 +81,7 @@ pub const SIXTIES_CARS: [&'static str; 8] = [
     "the rotary kei",
 ];
 
-pub const SEVENTIES_CARS: [&'static str; 10] = [
+pub const SEVENTIES_CARS: [&str; 10] = [
     "the esky v2",
     "il nonno 313",
     "the rotary 3",
@@ -94,7 +94,7 @@ pub const SEVENTIES_CARS: [&'static str; 10] = [
     "the zetto",
 ];
 
-pub const EIGHTIES_CARS: [&'static str; 10] = [
+pub const EIGHTIES_CARS: [&str; 10] = [
     "le cinq",
     "das whip",
     "turbo brick",
@@ -107,7 +107,7 @@ pub const EIGHTIES_CARS: [&'static str; 10] = [
     "das scholar",
 ];
 
-pub const GROUP_B_CARS: [&'static str; 17] = [
+pub const GROUP_B_CARS: [&str; 17] = [
     "the 4r6",
     "le 502",
     "das hammer v1",
@@ -127,7 +127,7 @@ pub const GROUP_B_CARS: [&'static str; 17] = [
     "das maestro",
 ];
 
-pub const GROUP_S_CARS: [&'static str; 8] = [
+pub const GROUP_S_CARS: [&str; 8] = [
     "das eibenhammer",
     "the rotary s7",
     "the umibozu",
@@ -138,7 +138,7 @@ pub const GROUP_S_CARS: [&'static str; 8] = [
     "the t22",
 ];
 
-pub const GROUP_A_CARS: [&'static str; 6] = [
+pub const GROUP_A_CARS: [&str; 6] = [
     "il gorillona",
     "the fujin",
     "the liftback",
@@ -147,13 +147,13 @@ pub const GROUP_A_CARS: [&'static str; 6] = [
     "the kingpin",
 ];
 
-pub const VANS: [&'static str; 4] = [
+pub const VANS: [&str; 4] = [
     "das speedvan",
     "das hi-speedvan",
     "das cube van",
     "funselektor's van",
 ];
 
-pub const TRIWHEELERS: [&'static str; 1] = ["little monkey"];
-pub const TRUCKS: [&'static str; 1] = ["dakar truck"];
-pub const LOGGING_TRUCKS: [&'static str; 1] = ["log transporter"];
+pub const TRIWHEELERS: [&str; 1] = ["little monkey"];
+pub const TRUCKS: [&str; 1] = ["dakar truck"];
+pub const LOGGING_TRUCKS: [&str; 1] = ["log transporter"];

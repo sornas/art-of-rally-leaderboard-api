@@ -53,6 +53,25 @@ pub enum Area {
     Australia,
 }
 
+impl fmt::Display for Area {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(
+            f,
+            "{}",
+            match self {
+                Area::Finland => "finland",
+                Area::Sardinia => "sardinia",
+                Area::Japan => "japan",
+                Area::Norway => "norway",
+                Area::Germany => "germany",
+                Area::Kenya => "kenya",
+                Area::Indonesia => "indonesia",
+                Area::Australia => "australia",
+            }
+        )
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "enum-iter", derive(strum::EnumIter))]
 pub enum Direction {
