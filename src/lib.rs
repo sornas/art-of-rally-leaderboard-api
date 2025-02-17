@@ -86,6 +86,19 @@ pub enum Weather {
     Wet,
 }
 
+impl fmt::Display for Weather {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(
+            f,
+            "{}",
+            match self {
+                Weather::Dry => "dry",
+                Weather::Wet => "wet",
+            }
+        )
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "enum-iter", derive(strum::EnumIter))]
 pub enum Group {
