@@ -263,12 +263,19 @@ impl Leaderboard {
         let group = Self::fmt_group(self.group);
         let filter = Self::fmt_filter(self.filter);
         let platform = Self::fmt_platform(self.platform);
-        let friends = friends
-            .iter()
-            .map(u64::to_string)
-            .collect::<Vec<_>>()
-            .join(",");
-        format!("https://www.funselektorfun.com/artofrally/leaderboard/{area}_Stage_{stage}_{direction}_{weather}_{group}/{filter}/{platform}/{user}/[{friends}]")
+        let friends = if friends.len() == 0 {
+            String::new()
+        } else {
+            format!(
+                "/[{}]",
+                friends
+                    .iter()
+                    .map(u64::to_string)
+                    .collect::<Vec<_>>()
+                    .join(",")
+            )
+        };
+        format!("https://www.funselektorfun.com/artofrally/leaderboard/{area}_Stage_{stage}_{direction}_{weather}_{group}/{filter}/{platform}/{user}{friends}")
     }
 }
 
