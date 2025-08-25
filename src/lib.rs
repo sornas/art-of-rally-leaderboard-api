@@ -155,7 +155,7 @@ pub enum Platform {
     None,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Response {
     pub leaderboard: Vec<LeaderboardEntry>,
     pub result: isize, // ?
