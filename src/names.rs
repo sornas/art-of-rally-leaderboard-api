@@ -26,7 +26,7 @@ pub const JAPAN_STAGES: [&str; 6] = [
 ];
 
 pub const NORWAY_STAGES: [&str; 6] = [
-    "lapstad",
+    "laupstad",
     "vestpollen",
     "stronstad",
     "kvannkjosen",

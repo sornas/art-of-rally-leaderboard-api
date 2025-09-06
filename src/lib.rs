@@ -7,7 +7,7 @@ pub use strum::IntoEnumIterator;
 
 pub mod names;
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Deserialize, Serialize)]
 pub struct Stage {
     pub area: Area,
     pub stage_number: usize, // in range 1..=6
@@ -40,7 +40,7 @@ impl fmt::Display for Stage {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Deserialize, Serialize)]
 #[cfg_attr(feature = "enum-iter", derive(strum::EnumIter))]
 pub enum Area {
     Finland,
@@ -72,14 +72,14 @@ impl fmt::Display for Area {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Deserialize, Serialize)]
 #[cfg_attr(feature = "enum-iter", derive(strum::EnumIter))]
 pub enum Direction {
     Forward,
     Backward,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Deserialize, Serialize)]
 #[cfg_attr(feature = "enum-iter", derive(strum::EnumIter))]
 pub enum Weather {
     Dry,
@@ -99,7 +99,7 @@ impl fmt::Display for Weather {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Deserialize, Serialize)]
 #[cfg_attr(feature = "enum-iter", derive(strum::EnumIter))]
 pub enum Group {
     Sixties,
@@ -144,7 +144,7 @@ pub enum Filter {
     OnlyMe,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Deserialize, Serialize)]
 pub enum Platform {
     Epic,
     Gog,
